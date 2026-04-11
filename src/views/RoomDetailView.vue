@@ -25,8 +25,8 @@
           <p class="mt-1 text-gray-500">{{ room.area }} · 台灣</p>
         </div>
         <div class="text-right flex-none">
-          <div class="text-2xl font-bold text-gray-900">{{ room.pricePerNight }}</div>
-          <div class="text-sm text-gray-400">每晚（不含稅）</div>
+          <div class="text-2xl font-bold text-gray-900">{{ room.monthlyRent }}</div>
+          <div class="text-sm text-gray-400">每月租金（不含管理費）</div>
         </div>
       </div>
 

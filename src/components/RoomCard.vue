@@ -18,8 +18,8 @@
       </div>
       <p class="text-sm text-gray-500 mt-1 line-clamp-2">{{ room.shortDesc }}</p>
       <div class="mt-3 flex items-baseline gap-1">
-        <span class="font-semibold text-gray-900">{{ room.pricePerNight }}</span>
-        <span class="text-sm text-gray-400">/ 晚</span>
+        <span class="font-semibold text-gray-900">{{ room.monthlyRent }}</span>
+        <span class="text-sm text-gray-400">/ 月</span>
       </div>
     </div>
   </RouterLink>
