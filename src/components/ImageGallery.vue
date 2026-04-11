@@ -5,7 +5,7 @@
       <img
         :src="images[current]"
         :alt="`圖片 ${current + 1}`"
-        class="w-full h-full object-cover transition-opacity duration-300"
+        class="w-full h-full object-contain transition-opacity duration-300"
       />
       <!-- 左右切換按鈕 -->
       <button

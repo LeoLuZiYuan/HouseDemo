@@ -1,5 +1,36 @@
 [
   {
+    "id": "yongan-suite",
+    "name": "永安捷運大套房",
+    "area": "大套房（5+1樓）",
+    "monthlyRent": "NT$12,800",
+    "shortDesc": "永安捷運站步行5分鐘，四號公園第一排，陽台直面樹海，5/15起租。",
+    "description": "新北市中和區永貞路，5+1樓大套房附大陽台，一層僅2間套房，安靜單純。坐擁四號公園第一排永久視野，非巷弄環境，陽台即可欣賞大片樹海。格局方正採光佳，房內設備齊全，生活機能優異，連鎖店林立。中正橋、福和橋、永福橋三橋直達台北市，對外交通便捷。免服務費，5/15起租。",
+    "features": [
+      "捷運步行5分鐘", "公園第一排景觀", "大陽台", "雙人掀床＋床墊",
+      "木衣櫃＋書桌辦公椅", "一級能效雙門冰箱", "變頻分離式冷暖氣",
+      "獨立洗衣機", "LED大電視", "電磁爐＋微波爐", "天然瓦斯熱水器",
+      "含網路(600M)＋第四台", "含水費＋瓦斯費", "電費一度5元"
+    ],
+    "coverImage": "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920679/HouseDemo/Room1/S__45940796_0_tha4t0.jpg",
+    "images": [
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920678/HouseDemo/Room1/S__45940811_0_npbzkq.jpg",
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920671/HouseDemo/Room1/S__45940801_0_o1meyx.jpg",
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920670/HouseDemo/Room1/S__45940800_0_izce9q.jpg",
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920670/HouseDemo/Room1/S__45940799_0_drpqih.jpg",
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920669/HouseDemo/Room1/S__45940798_0_s6tvs5.jpg",
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920669/HouseDemo/Room1/S__45940797_0_gplqqy.jpg",
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775919397/HouseDemo/Room1/S__45940810_0_tdwxzt.jpg",
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920672/HouseDemo/Room1/S__45940802_0_uy3msy.jpg",
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920674/HouseDemo/Room1/S__45940805_0_iwydtu.jpg",
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920674/HouseDemo/Room1/S__45940804_0_rrh7ek.jpg",
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920673/HouseDemo/Room1/S__45940803_0_zrhwol.jpg",
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920675/HouseDemo/Room1/S__45940807_0_qeszk0.jpg",
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920676/HouseDemo/Room1/S__45940808_0_oit1u1.jpg",
+      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775920677/HouseDemo/Room1/S__45940809_0_hptscp.jpg"
+    ]
+  },
+  {
     "id": "city-suite",
     "name": "城市輕旅套房",
     "area": "20坪",
@@ -9,7 +40,7 @@
     "features": ["免費WiFi", "冷暖氣", "Queen Size雙人床", "近捷運", "高樓城市景觀", "獨立衛浴", "免費盥洗用品", "液晶電視"],
     "coverImage": "https://picsum.photos/seed/city-suite-cover/800/600",
     "images": [
-      "https://res.cloudinary.com/dtreubqr3/image/upload/v1775919397/S__45940810_0_tdwxzt.jpg",
+      "https://picsum.photos/seed/city-suite-1/800/600",
       "https://picsum.photos/seed/city-suite-2/800/600",
       "https://picsum.photos/seed/city-suite-3/800/600"
     ]
@@ -43,25 +74,7 @@
       "https://picsum.photos/seed/mountain-cabin-2/800/600",
       "https://picsum.photos/seed/mountain-cabin-3/800/600"
     ]
-  },
-  {
-    "id": "yongan-suite",
-    "name": "永安捷運大套房",
-    "area": "大套房（5+1樓）",
-    "monthlyRent": "NT$12,800",
-    "shortDesc": "永安捷運站步行5分鐘，四號公園第一排，陽台直面樹海，5/15起租。",
-    "description": "新北市中和區永貞路，5+1樓大套房附大陽台，一層僅2間套房，安靜單純。坐擁四號公園第一排永久視野，非巷弄環境，陽台即可欣賞大片樹海。格局方正採光佳，房內設備齊全，生活機能優異，連鎖店林立。中正橋、福和橋、永福橋三橋直達台北市，對外交通便捷。免服務費，5/15起租。",
-    "features": [
-      "捷運步行5分鐘", "公園第一排景觀", "大陽台", "雙人掀床＋床墊",
-      "木衣櫃＋書桌辦公椅", "一級能效雙門冰箱", "變頻分離式冷暖氣",
-      "獨立洗衣機", "LED大電視", "電磁爐＋微波爐", "天然瓦斯熱水器",
-      "含網路(600M)＋第四台", "含水費＋瓦斯費", "電費一度5元"
-    ],
-    "coverImage": "https://picsum.photos/seed/yongan-suite-cover/800/600",
-    "images": [
-      "https://picsum.photos/seed/yongan-suite-1/800/600",
-      "https://picsum.photos/seed/yongan-suite-2/800/600",
-      "https://picsum.photos/seed/yongan-suite-3/800/600"
-    ]
   }
 ]
+
+
