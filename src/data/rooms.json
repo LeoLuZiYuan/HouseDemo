@@ -1,0 +1,47 @@
+[
+  {
+    "id": "city-suite",
+    "name": "城市輕旅套房",
+    "area": "20坪",
+    "pricePerNight": "NT$3,200",
+    "shortDesc": "位於市中心，步行5分鐘即達捷運站，高樓視野盡收城市夜景。",
+    "description": "城市輕旅套房坐落於台北市核心地帶，交通便捷，周邊餐廳、便利商店、百貨公司一應俱全。房間採用現代簡約風格設計，大片落地窗將城市天際線盡收眼底，夜晚燈火璀璨，令人心曠神怡。套房內配備舒適的Queen Size雙人床、獨立衣帽間及精品衛浴，適合商務出差或都市短旅的旅客入住。",
+    "features": ["免費WiFi", "冷暖氣", "Queen Size雙人床", "近捷運", "高樓城市景觀", "獨立衛浴", "免費盥洗用品", "液晶電視"],
+    "coverImage": "https://picsum.photos/seed/city-suite-cover/800/600",
+    "images": [
+      "https://picsum.photos/seed/city-suite-1/800/600",
+      "https://picsum.photos/seed/city-suite-2/800/600",
+      "https://picsum.photos/seed/city-suite-3/800/600"
+    ]
+  },
+  {
+    "id": "family-room",
+    "name": "溫馨親子四人房",
+    "area": "35坪",
+    "pricePerNight": "NT$5,800",
+    "shortDesc": "寬敞明亮的親子空間，附設廚房設備，鄰近公園與親子遊樂設施。",
+    "description": "溫馨親子四人房專為家庭旅客精心設計，空間寬敞達35坪，提供一張King Size大床及一組上下鋪床架，輕鬆容納四位家庭成員。房內設有獨立廚房區，配備電磁爐、電鍋與基本餐具，讓家長可以為孩子準備熟悉的料理。距離鄰近公園步行只需3分鐘，假日帶孩子出門踏青十分方便。整體以暖色調木質裝潢為主，營造溫馨居家感。",
+    "features": ["免費WiFi", "冷暖氣", "King Size大床", "上下鋪", "獨立廚房", "近公園", "兒童友善", "洗衣機", "嬰兒床（需預訂）"],
+    "coverImage": "https://picsum.photos/seed/family-room-cover/800/600",
+    "images": [
+      "https://picsum.photos/seed/family-room-1/800/600",
+      "https://picsum.photos/seed/family-room-2/800/600",
+      "https://picsum.photos/seed/family-room-3/800/600"
+    ]
+  },
+  {
+    "id": "mountain-cabin",
+    "name": "山景度假木屋",
+    "area": "28坪",
+    "pricePerNight": "NT$4,500",
+    "shortDesc": "原木裝潢搭配私人露台，醒來即是翠綠山景，體驗山林度假的寧靜。",
+    "description": "山景度假木屋座落於青山翠谷之間，採用天然台灣檜木打造室內裝潢，散發清新木香，讓旅客徹底從都市壓力中解脫。私人露台直面連綿山脈，清晨享用咖啡、傍晚觀賞日落，皆是無可取代的體驗。木屋提供一張頂級彈簧雙人床與手工製棉被，確保旅客獲得最佳睡眠品質。屋外設有專屬停車位，自駕前來十分方便。",
+    "features": ["免費WiFi", "冷暖氣", "頂級彈簧雙人床", "私人露台", "森林山景", "停車位", "原木裝潢", "咖啡機", "BBQ設備（需預約）"],
+    "coverImage": "https://picsum.photos/seed/mountain-cabin-cover/800/600",
+    "images": [
+      "https://picsum.photos/seed/mountain-cabin-1/800/600",
+      "https://picsum.photos/seed/mountain-cabin-2/800/600",
+      "https://picsum.photos/seed/mountain-cabin-3/800/600"
+    ]
+  }
+]
