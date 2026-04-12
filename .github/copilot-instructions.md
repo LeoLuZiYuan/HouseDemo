@@ -29,7 +29,6 @@
   "images": ["https://...", "https://..."]
 }
 ```
-禁止使用 `pricePerNight`，價格欄位統一為 `monthlyRent`。
 
 ## 元件結構
 ```
@@ -61,3 +60,18 @@ src/views/
 - Custom domain：`housedemoll.com`（CNAME 在 `public/CNAME`）
 - Node.js CI 版本：22
 - `vite.config.js` 的 `base` 設為 `'/'`（使用 custom domain）
+
+## 功能規格（持續更新）
+
+### 已實作
+- 首頁（HomeView）：房型卡片列表，3 欄響應式 grid（sm:2欄 / lg:3欄）
+- 房型卡片（RoomCard）：封面圖（4:3）、名稱、面積、簡述（2行截斷）、月租金
+- 房型詳情頁（RoomDetailView）：月租、坪數、特色標籤、完整說明文字
+- 圖片輪播（ImageGallery）：主圖（aspect-video、object-contain）+ 縮圖列 + 左右切換按鈕 + 頁碼指示點
+- 頂部導覽列（AppHeader）：Logo + 品牌名稱，sticky 固定頂部
+- Vue Router：Hash history，/ 首頁、/room/:id 詳情頁，切換頁面自動捲回頂部
+- GitHub Pages 自動部署（push to master 觸發，Node 22）
+- Custom domain：housedemoll.com
+
+### 未來規劃
+- （在此記錄待開發功能）
