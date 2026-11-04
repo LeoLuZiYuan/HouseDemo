@@ -72,22 +72,26 @@ As a landlord, I need a secure login so my admin panel is protected and only I c
 - REQ-AUTH-02: Unauthorized users cannot access admin
 
 **Success Criteria:**
-1. Login endpoint `POST /api/auth/login` accepts email/password, returns JWT token or session cookie; invalid credentials return 401
-2. Admin routes protected by middleware that validates token/session; unauthenticated requests redirect to login
-3. Frontend login page functional; accepts credentials, stores token, redirects to admin dashboard on success; shows error on failure
+1. Login endpoint `POST /api/auth/login` accepts email/password, returns JWT token; invalid credentials return 401
+2. Admin routes protected by middleware that validates token in Authorization header; unauthenticated requests return 401
+3. Frontend login page functional; accepts credentials, stores token in localStorage, redirects to admin dashboard on success; shows error on failure
 
 **Acceptance Tests:**
-- [ ] POST /api/auth/login with valid credentials returns token
+- [ ] POST /api/auth/login with valid credentials returns JWT token
 - [ ] POST /api/auth/login with invalid credentials returns 401
-- [ ] GET /api/admin/* without token returns 401 or redirects
-- [ ] Frontend login form submits and redirects on success
-- [ ] Token persists in sessionStorage/localStorage; survives page refresh
+- [ ] GET /api/admin/* without token returns 401
+- [ ] Frontend login form submits and redirects to /admin on success
+- [ ] Token persists in localStorage; survives page refresh
+- [ ] Router guard prevents access to /admin routes without token
+
+**Plans:**
+- [x] 02-01-PLAN.md — End-to-end authentication (tracer: login → JWT → protected endpoint)
 
 **Dependencies:** Phase 1 (API foundation)
 
 **Risks:**
-- .NET authentication/authorization middleware complexity → Mitigate: use simple JWT or session-based auth (not OAuth)
-- Frontend token management → Mitigate: standardize storage strategy (localStorage vs sessionStorage)
+- JWT token expiry/refresh → Mitigate: 24-hour expiration for MVP; refresh mechanism in Phase 2.1
+- Frontend token XSS vulnerability → Mitigate: localStorage (acceptable for learning project); HttpOnly cookies in Phase 2.1
 
 ---
 
