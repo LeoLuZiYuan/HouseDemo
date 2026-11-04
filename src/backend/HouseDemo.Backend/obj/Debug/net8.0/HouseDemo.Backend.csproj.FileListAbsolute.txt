@@ -35,3 +35,11 @@
 /Users/leolu/Documents/GitHub/HouseDemo/src/backend/HouseDemo.Backend/obj/Debug/net8.0/HouseDemo.Backend.pdb
 /Users/leolu/Documents/GitHub/HouseDemo/src/backend/HouseDemo.Backend/obj/Debug/net8.0/HouseDemo.Backend.genruntimeconfig.cache
 /Users/leolu/Documents/GitHub/HouseDemo/src/backend/HouseDemo.Backend/obj/Debug/net8.0/ref/HouseDemo.Backend.dll
+/Users/leolu/Documents/GitHub/HouseDemo/src/backend/HouseDemo.Backend/bin/Debug/net8.0/BCrypt-Net-Next.dll
+/Users/leolu/Documents/GitHub/HouseDemo/src/backend/HouseDemo.Backend/bin/Debug/net8.0/Microsoft.Bcl.Cryptography.dll
+/Users/leolu/Documents/GitHub/HouseDemo/src/backend/HouseDemo.Backend/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/leolu/Documents/GitHub/HouseDemo/src/backend/HouseDemo.Backend/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/leolu/Documents/GitHub/HouseDemo/src/backend/HouseDemo.Backend/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/leolu/Documents/GitHub/HouseDemo/src/backend/HouseDemo.Backend/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/leolu/Documents/GitHub/HouseDemo/src/backend/HouseDemo.Backend/bin/Debug/net8.0/System.Formats.Asn1.dll
+/Users/leolu/Documents/GitHub/HouseDemo/src/backend/HouseDemo.Backend/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
