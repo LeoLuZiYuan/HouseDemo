@@ -80,7 +80,7 @@ public class PropertyService
 
             var sql = @"
                 INSERT INTO properties (name, area, monthly_rent, short_desc, description, features, cover_image, images, created_at, updated_at)
-                VALUES (@Name, @Area, @MonthlyRent, @ShortDesc, @Description, @Features, @CoverImage, @Images, @CreatedAt, @UpdatedAt)
+                VALUES (@Name, @Area, @MonthlyRent, @ShortDesc, @Description, @Features::jsonb, @CoverImage, @Images::jsonb, @CreatedAt, @UpdatedAt)
                 RETURNING id, name, area, monthly_rent, short_desc, description, features, cover_image, images, created_at, updated_at";
 
             var result = await conn.QueryFirstOrDefaultAsync<PropertyDto>(sql, new
@@ -136,7 +136,7 @@ public class PropertyService
                 UPDATE properties 
                 SET name = @Name, area = @Area, monthly_rent = @MonthlyRent, 
                     short_desc = @ShortDesc, description = @Description, 
-                    features = @Features, cover_image = @CoverImage, images = @Images, updated_at = @UpdatedAt
+                    features = @Features::jsonb, cover_image = @CoverImage, images = @Images::jsonb, updated_at = @UpdatedAt
                 WHERE id = @Id
                 RETURNING id, name, area, monthly_rent, short_desc, description, features, cover_image, images, created_at, updated_at";
 

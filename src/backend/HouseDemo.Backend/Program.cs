@@ -34,6 +34,9 @@ var adminGroup = app.MapGroup("/api/admin/properties")
 adminGroup.MapGet("/", GetAllPropertiesAdmin)
     .WithName("GetAllPropertiesAdmin");
 
+adminGroup.MapGet("/{id}", GetPropertyById)
+    .WithName("GetAdminPropertyById");
+
 adminGroup.MapPost("/", CreatePropertyHandler)
     .WithName("CreateProperty");
 
