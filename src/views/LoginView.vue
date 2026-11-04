@@ -56,8 +56,10 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthApi } from '../composables/useAuthApi'
 
 const router = useRouter()
+const { login } = useAuthApi()
 const form = ref({ email: '', password: '' })
 const loading = ref(false)
 const error = ref('')
@@ -67,22 +69,11 @@ const handleLogin = async () => {
   error.value = ''
 
   try {
-    const response = await fetch('http://localhost:5000/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form.value)
-    })
-
-    if (!response.ok) {
-      error.value = '郵箱或密碼不正確'
-      return
-    }
-
-    const data = await response.json()
+    const data = await login(form.value.email, form.value.password)
     localStorage.setItem('auth_token', data.token)
     router.push('/admin')
   } catch (err) {
-    error.value = '登入失敗，請檢查網路連線'
+    error.value = '郵箱或密碼不正確'
   } finally {
     loading.value = false
   }
