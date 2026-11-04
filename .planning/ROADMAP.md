@@ -11,13 +11,13 @@
 
 ## Phase Overview
 
-| # | Phase | Goal | Requirements | Success Criteria |
-|---|-------|------|--------------|------------------|
-| 1 | Database & REST API | Set up PostgreSQL, data schema, backend API | REQ-PERSIST-01, REQ-PERSIST-02, REQ-PERSIST-04 | 3 |
-| 2 | Admin Authentication | Basic auth system with login | REQ-AUTH-01, REQ-AUTH-02 | 3 |
-| 3 | Admin CRUD Dashboard | Full admin panel for managing properties | REQ-ADMIN-01, REQ-ADMIN-02, REQ-ADMIN-03, REQ-ADMIN-04, REQ-ADMIN-05 | 4 |
-| 4 | API Integration | Update frontend to use backend API | REQ-PERSIST-03, REQ-PUBLIC-01, REQ-PUBLIC-02 | 3 |
-| 5 | Testing & Deployment | E2E testing, deploy to Heroku, verify | All requirements validated | 3 |
+| # | Phase | Goal | Requirements | Success Criteria | Status |
+|---|-------|------|--------------|------------------|--------|
+| 1 | Database & REST API | Set up PostgreSQL, data schema, backend API | REQ-PERSIST-01, REQ-PERSIST-02, REQ-PERSIST-04 | 3 | ✅ |
+| 2 | Admin Authentication | Basic auth system with login | REQ-AUTH-01, REQ-AUTH-02 | 3 | ✅ |
+| 3 | Admin CRUD Dashboard | Full admin panel for managing properties | REQ-ADMIN-01, REQ-ADMIN-02, REQ-ADMIN-03, REQ-ADMIN-04, REQ-ADMIN-05 | 5 | ✅ |
+| 4 | API Integration | Update frontend to use backend API | REQ-PERSIST-03, REQ-PUBLIC-01, REQ-PUBLIC-02 | 3 | Pending |
+| 5 | Testing & Deployment | E2E testing, deploy to Heroku, verify | All requirements validated | 3 | Pending |
 
 **Total Requirements Mapped:** 15/15 ✓
 
