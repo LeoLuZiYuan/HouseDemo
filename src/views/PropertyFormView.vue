@@ -241,14 +241,30 @@ const handleSubmit = async () => {
   isLoading.value = true
 
   try {
+    // Convert form data: split string arrays into actual arrays
+    const propertyData = {
+      name: form.value.name,
+      area: parseFloat(form.value.area),
+      monthlyRent: parseFloat(form.value.monthlyRent),
+      shortDesc: form.value.shortDesc,
+      description: form.value.description,
+      features: form.value.features
+        ? form.value.features.split(',').map(f => f.trim()).filter(f => f)
+        : [],
+      coverImage: form.value.coverImage,
+      images: form.value.images
+        ? form.value.images.split(',').map(img => img.trim()).filter(img => img)
+        : []
+    }
+
     if (mode.value === 'create') {
-      await createProperty(form.value)
+      await createProperty(propertyData)
       successMessage.value = 'Property created successfully!'
       setTimeout(() => {
         router.push('/admin')
       }, 1500)
     } else {
-      await updateProperty(propertyId.value, form.value)
+      await updateProperty(propertyId.value, propertyData)
       successMessage.value = 'Property updated successfully!'
       setTimeout(() => {
         router.push('/admin')
