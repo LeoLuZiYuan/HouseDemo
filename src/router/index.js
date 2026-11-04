@@ -2,7 +2,8 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import RoomDetailView from '../views/RoomDetailView.vue'
 import LoginView from '../views/LoginView.vue'
-import AdminView from '../views/AdminView.vue'
+import AdminDashboardView from '../views/AdminDashboardView.vue'
+import PropertyFormView from '../views/PropertyFormView.vue'
 
 const routes = [
   {
@@ -23,7 +24,19 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
-    component: AdminView,
+    component: AdminDashboardView,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/admin/create',
+    name: 'create-property',
+    component: PropertyFormView,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/admin/edit/:propertyId',
+    name: 'edit-property',
+    component: PropertyFormView,
     meta: { requiresAuth: true }
   }
 ]

@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<Database>();
 builder.Services.AddSingleton<PropertyRepository>();
+builder.Services.AddSingleton<PropertyService>();
 builder.Services.AddSingleton<AuthService>();
 
 builder.Services.AddCors(options =>
@@ -32,6 +33,15 @@ var adminGroup = app.MapGroup("/api/admin/properties")
 
 adminGroup.MapGet("/", GetAllPropertiesAdmin)
     .WithName("GetAllPropertiesAdmin");
+
+adminGroup.MapPost("/", CreatePropertyHandler)
+    .WithName("CreateProperty");
+
+adminGroup.MapPut("/{id}", UpdatePropertyHandler)
+    .WithName("UpdateProperty");
+
+adminGroup.MapDelete("/{id}", DeletePropertyHandler)
+    .WithName("DeleteProperty");
 
 // Public properties (from Phase 1)
 var group = app.MapGroup("/api/properties").WithName("Properties");
@@ -63,6 +73,70 @@ async Task<IResult> GetAllPropertiesAdmin(PropertyRepository repo)
 {
     var properties = await repo.GetAllPropertiesAsync();
     return Results.Ok(properties);
+}
+
+async Task<IResult> CreatePropertyHandler(CreatePropertyRequest request, PropertyService service)
+{
+    // Validate input
+    var validationErrors = service.ValidateProperty(request);
+    if (validationErrors.Count > 0)
+    {
+        return Results.BadRequest(new ValidationErrorResponse { Errors = validationErrors });
+    }
+
+    // Insert property
+    var (success, property, error) = await service.InsertPropertyAsync(request);
+    if (!success)
+    {
+        return Results.StatusCode(500, new { message = error ?? "Failed to create property" });
+    }
+
+    return Results.Created($"/api/admin/properties/{property?.Id}", property);
+}
+
+async Task<IResult> UpdatePropertyHandler(int id, UpdatePropertyRequest request, PropertyService service)
+{
+    // Create a validation request from update request (same fields)
+    var validationRequest = new CreatePropertyRequest
+    {
+        Name = request.Name,
+        Area = request.Area,
+        MonthlyRent = request.MonthlyRent,
+        ShortDesc = request.ShortDesc,
+        Description = request.Description,
+        Features = request.Features,
+        CoverImage = request.CoverImage,
+        Images = request.Images
+    };
+
+    var validationErrors = service.ValidateProperty(validationRequest);
+    if (validationErrors.Count > 0)
+    {
+        return Results.BadRequest(new ValidationErrorResponse { Errors = validationErrors });
+    }
+
+    var (success, property, error) = await service.UpdatePropertyAsync(id, request);
+    if (!success)
+    {
+        if (error?.Contains("not found") == true)
+            return Results.NotFound(new { message = error });
+        return Results.StatusCode(500, new { message = error ?? "Failed to update property" });
+    }
+
+    return Results.Ok(property);
+}
+
+async Task<IResult> DeletePropertyHandler(int id, PropertyService service)
+{
+    var (success, error) = await service.DeletePropertyAsync(id);
+    if (!success)
+    {
+        if (error?.Contains("not found") == true)
+            return Results.NotFound(new { message = error });
+        return Results.StatusCode(500, new { message = error ?? "Failed to delete property" });
+    }
+
+    return Results.NoContent();
 }
 
 async Task<IResult> GetAllProperties(PropertyRepository repo)
