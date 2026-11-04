@@ -4,10 +4,10 @@ This file tracks the current state of the GSD workflow and project execution.
 
 ## Workflow State
 
-- **Status:** Phase 4 Complete
-- **Current Phase:** 4 (API Integration & Frontend)
-- **Last Action:** Phase 4 execute complete — All 4 tasks executed, HomeView and RoomDetailView now powered by backend API
-- **Next Action:** Plan & execute Phase 5 (Testing & Deployment) via `/gsd-plan-phase 5`
+- **Status:** Phase 5 Context Ready
+- **Current Phase:** 5 (Testing & Deployment)
+- **Last Action:** Phase 5 context discussion complete — All 5 gray areas decided (E2E Testing, Heroku Backend, Domain & CORS, GitHub Pages, Production Monitoring)
+- **Next Action:** Plan Phase 5 via `/gsd-plan-phase 5`
 
 ## Scope
 

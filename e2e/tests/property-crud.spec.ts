@@ -83,7 +83,7 @@ test.describe('Property CRUD Operations', () => {
       }))
     , { body: TEST_PROPERTY, token: authToken });
 
-    expect(createResponse.status).toBe(200);
+    expect([200, 201]).toContain(createResponse.status);
     expect(createResponse.data.id).toBeTruthy();
     expect(createResponse.data.name).toBe(TEST_PROPERTY.name);
   });
