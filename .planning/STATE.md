@@ -4,10 +4,10 @@ This file tracks the current state of the GSD workflow and project execution.
 
 ## Workflow State
 
-- **Status:** Phase 3 Complete
-- **Current Phase:** 3 (Admin CRUD Dashboard)
-- **Last Action:** Phase 3 execute complete — Admin CRUD dashboard, all endpoints, form validation verified
-- **Next Action:** Plan & execute Phase 4 (API Integration & Frontend) via `/gsd-plan-phase 4`
+- **Status:** Phase 4 Complete
+- **Current Phase:** 4 (API Integration & Frontend)
+- **Last Action:** Phase 4 execute complete — All 4 tasks executed, HomeView and RoomDetailView now powered by backend API
+- **Next Action:** Plan & execute Phase 5 (Testing & Deployment) via `/gsd-plan-phase 5`
 
 ## Scope
 
@@ -23,15 +23,15 @@ This file tracks the current state of the GSD workflow and project execution.
 | 1 | Database & REST API | ✅ Complete | 2026-11-04 |
 | 2 | Admin Authentication | ✅ Complete | 2026-11-04 |
 | 3 | Admin CRUD Dashboard | ✅ Complete | 2026-11-04 |
-| 4 | API Integration & Frontend | Pending | — |
+| 4 | API Integration & Frontend | ✅ Complete | 2026-11-04 |
 | 5 | Testing & Deployment | Pending | — |
 
 ## Requirement Traceability
 
 **Total Requirements:** 13  
-**Validated:** 10 (REQ-PERSIST-01, REQ-PERSIST-02, REQ-PERSIST-04, REQ-AUTH-01, REQ-AUTH-02, REQ-ADMIN-01, REQ-ADMIN-02, REQ-ADMIN-03, REQ-ADMIN-04, REQ-ADMIN-05)  
+**Validated:** 13 (REQ-PERSIST-01, REQ-PERSIST-02, REQ-PERSIST-03, REQ-PERSIST-04, REQ-AUTH-01, REQ-AUTH-02, REQ-PUBLIC-01, REQ-PUBLIC-02, REQ-ADMIN-01, REQ-ADMIN-02, REQ-ADMIN-03, REQ-ADMIN-04, REQ-ADMIN-05)  
 **In Progress:** 0  
-**Pending:** 3  
+**Pending:** 0  
 
 See REQUIREMENTS.md for full list.
 
@@ -46,29 +46,30 @@ See REQUIREMENTS.md for full list.
 | REST API (not GraphQL) | Simpler for CRUD operations | Locked |
 | Heroku deployment | Free tier, GitHub integration | Locked |
 
-## Phase 3 Summary
+## Phase 4 Summary
 
-**Admin CRUD Dashboard Complete:**
-- POST /api/admin/properties creates property with validation
-- PUT /api/admin/properties/{id} updates property details
-- DELETE /api/admin/properties/{id} deletes property with confirmation
-- GET /api/admin/properties lists all properties (requires JWT)
-- PropertyFormView.vue supports create and edit modes
-- AdminDashboardView.vue displays properties in table with action buttons
-- All CRUD operations require JWT authentication
-- Form validation on both client and server sides
-- Features and images stored as JSON arrays
+**API Integration & Frontend Complete:**
+- HomeView now fetches properties from /api/properties (no static JSON)
+- RoomDetailView fetches single property by ID from API
+- usePropertyApi composable with public and admin methods
+- Loading states (spinners) during data fetch
+- Error handling with retry buttons
+- Empty state messaging for no properties
+- rooms.json archived (removed from codebase)
+- All properties render from backend API exclusively
 
 **Verification:**
-- ✓ POST creates property, returns 201 with new property object
-- ✓ PUT updates property, returns 200 with updated object
-- ✓ DELETE removes property, returns 204
-- ✓ GET lists all properties with JWT, returns 200
-- ✓ Unauthorized requests return 401
-- ✓ Form validation rejects invalid submissions
-- ✓ Dashboard auto-refreshes after CRUD operations
-- ✓ Backend compiles successfully
+- ✓ Build succeeds with 0 errors
+- ✓ HomeView calls usePropertyApi.getProperties() on mount
+- ✓ RoomDetailView calls usePropertyApi.getPublicPropertyById(id) on mount
+- ✓ Admin creates property → public site reflects immediately (after refresh)
+- ✓ Admin edits property → detail page shows changes (after refresh)
+- ✓ Admin deletes property → property no longer appears (after refresh)
+- ✓ Images load correctly from backend URLs
+- ✓ Loading and error states display with user-friendly messages
+- ✓ No console errors or warnings
+- ✓ All 13 requirements validated (100%)
 
 ---
 
-*Last updated: 2026-11-04 at Phase 3 completion*
+*Last updated: 2026-11-04 at Phase 4 completion*
