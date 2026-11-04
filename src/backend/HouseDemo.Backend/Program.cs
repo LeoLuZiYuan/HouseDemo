@@ -53,20 +53,20 @@ group.MapGet("/{id}", GetPropertyById)
     .WithName("GetPropertyById");
 
 // Handlers
-async Task<IResult> LoginHandler(LoginRequest request, AuthService authService)
+Task<IResult> LoginHandler(LoginRequest request, AuthService authService)
 {
     var (success, token, message) = authService.Login(request.Email, request.Password);
     
     if (!success)
-        return Results.Unauthorized();
+        return Task.FromResult(Results.Unauthorized());
 
-    return Results.Ok(new AuthResponse
+    return Task.FromResult(Results.Ok(new AuthResponse
     {
         Success = true,
         Message = message,
         Token = token,
         ExpiresInSeconds = 86400
-    });
+    }));
 }
 
 async Task<IResult> GetAllPropertiesAdmin(PropertyRepository repo)
@@ -88,7 +88,7 @@ async Task<IResult> CreatePropertyHandler(CreatePropertyRequest request, Propert
     var (success, property, error) = await service.InsertPropertyAsync(request);
     if (!success)
     {
-        return Results.StatusCode(500, new { message = error ?? "Failed to create property" });
+        return Results.Json(new { message = error ?? "Failed to create property" }, statusCode: 500);
     }
 
     return Results.Created($"/api/admin/properties/{property?.Id}", property);
@@ -120,7 +120,7 @@ async Task<IResult> UpdatePropertyHandler(int id, UpdatePropertyRequest request,
     {
         if (error?.Contains("not found") == true)
             return Results.NotFound(new { message = error });
-        return Results.StatusCode(500, new { message = error ?? "Failed to update property" });
+        return Results.Json(new { message = error ?? "Failed to update property" }, statusCode: 500);
     }
 
     return Results.Ok(property);
@@ -133,7 +133,7 @@ async Task<IResult> DeletePropertyHandler(int id, PropertyService service)
     {
         if (error?.Contains("not found") == true)
             return Results.NotFound(new { message = error });
-        return Results.StatusCode(500, new { message = error ?? "Failed to delete property" });
+        return Results.Json(new { message = error ?? "Failed to delete property" }, statusCode: 500);
     }
 
     return Results.NoContent();
