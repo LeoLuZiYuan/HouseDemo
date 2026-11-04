@@ -6,13 +6,13 @@ namespace HouseDemo.Backend.Models;
 public class CreatePropertyRequest
 {
     public string? Name { get; set; }
-    public string? Area { get; set; }
-    public string? MonthlyRent { get; set; }
+    public decimal Area { get; set; }
+    public decimal MonthlyRent { get; set; }
     public string? ShortDesc { get; set; }
     public string? Description { get; set; }
-    public string? Features { get; set; } // Comma-separated or JSON array string
+    public List<string>? Features { get; set; }
     public string? CoverImage { get; set; }
-    public string? Images { get; set; } // Comma-separated URLs or JSON array string
+    public List<string>? Images { get; set; }
 }
 
 /// <summary>
@@ -21,13 +21,13 @@ public class CreatePropertyRequest
 public class UpdatePropertyRequest
 {
     public string? Name { get; set; }
-    public string? Area { get; set; }
-    public string? MonthlyRent { get; set; }
+    public decimal Area { get; set; }
+    public decimal MonthlyRent { get; set; }
     public string? ShortDesc { get; set; }
     public string? Description { get; set; }
-    public string? Features { get; set; }
+    public List<string>? Features { get; set; }
     public string? CoverImage { get; set; }
-    public string? Images { get; set; }
+    public List<string>? Images { get; set; }
 }
 
 /// <summary>

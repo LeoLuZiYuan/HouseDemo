@@ -23,14 +23,10 @@ public class PropertyService
         if (string.IsNullOrWhiteSpace(request.Name))
             errors.Add("Property name is required");
 
-        if (string.IsNullOrWhiteSpace(request.Area))
-            errors.Add("Area is required");
-        else if (!decimal.TryParse(request.Area, out var area) || area <= 0)
+        if (request.Area <= 0)
             errors.Add("Area must be a positive number");
 
-        if (string.IsNullOrWhiteSpace(request.MonthlyRent))
-            errors.Add("Monthly rent is required");
-        else if (!decimal.TryParse(request.MonthlyRent, out var rent) || rent <= 0)
+        if (request.MonthlyRent <= 0)
             errors.Add("Monthly rent must be a positive number");
 
         if (string.IsNullOrWhiteSpace(request.ShortDesc))
@@ -45,10 +41,9 @@ public class PropertyService
             errors.Add("Cover image must be a valid URL");
 
         // Validate images if provided
-        if (!string.IsNullOrWhiteSpace(request.Images))
+        if (request.Images != null && request.Images.Count > 0)
         {
-            var imageUrls = ParseCommaSeparatedList(request.Images);
-            foreach (var url in imageUrls)
+            foreach (var url in request.Images)
             {
                 if (!IsValidUrl(url))
                 {
@@ -219,18 +214,12 @@ public class PropertyService
             .ToList();
     }
 
-    private static string ConvertToJsonArray(string? input)
+    private static string ConvertToJsonArray(List<string>? input)
     {
-        if (string.IsNullOrWhiteSpace(input))
+        if (input == null || input.Count == 0)
             return "[]";
 
-        // If already looks like JSON array, use as-is
-        if (input.Trim().StartsWith("["))
-            return input;
-
-        // Parse comma-separated values and convert to JSON array
-        var list = ParseCommaSeparatedList(input);
-        return JsonSerializer.Serialize(list);
+        return JsonSerializer.Serialize(input);
     }
 
     private static PropertyResponse MapToPropertyResponse(PropertyDto dto)
