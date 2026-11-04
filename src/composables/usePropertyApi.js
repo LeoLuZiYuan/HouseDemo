@@ -10,7 +10,28 @@ export function usePropertyApi() {
     'Authorization': `Bearer ${token.value}`
   })
 
+  // Public endpoint - no auth required
   const getProperties = async () => {
+    try {
+      const response = await fetch(`${apiBase}/properties`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      })
+
+      if (!response.ok) {
+        console.error('Failed to fetch properties:', response.statusText)
+        return []
+      }
+
+      return await response.json()
+    } catch (error) {
+      console.error('Error fetching properties:', error)
+      return []
+    }
+  }
+
+  // Admin endpoint - requires auth
+  const getAdminProperties = async () => {
     const response = await fetch(`${apiBase}/admin/properties`, {
       method: 'GET',
       headers: getAuthHeaders()
@@ -25,8 +46,28 @@ export function usePropertyApi() {
   }
 
   const getPropertyById = async (id) => {
+    // For admin views, use admin endpoint which has all properties
+    try {
+      const response = await fetch(`${apiBase}/admin/properties/${id}`, {
+        method: 'GET',
+        headers: getAuthHeaders()
+      })
+
+      if (!response.ok) {
+        return null
+      }
+
+      return await response.json()
+    } catch (error) {
+      console.error('Error fetching property:', error)
+      return null
+    }
+  }
+
+  const getPublicPropertyById = async (id) => {
+    // For public views, search the public properties array
     const properties = await getProperties()
-    return properties.find(p => p.id === id) || null
+    return properties.find(p => p.id === parseInt(id)) || null
   }
 
   const createProperty = async (propertyData) => {
@@ -79,7 +120,9 @@ export function usePropertyApi() {
 
   return {
     getProperties,
+    getAdminProperties,
     getPropertyById,
+    getPublicPropertyById,
     createProperty,
     updateProperty,
     deleteProperty
