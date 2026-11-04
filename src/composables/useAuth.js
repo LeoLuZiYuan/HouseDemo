@@ -2,11 +2,12 @@ import { ref, computed } from 'vue'
 
 export function useAuth() {
   const token = ref(localStorage.getItem('auth_token'))
+  const apiBase = import.meta.env.VITE_API_BASE
 
   const isAuthenticated = computed(() => !!token.value)
 
   const login = async (email, password) => {
-    const response = await fetch('http://localhost:5088/api/auth/login', {
+    const response = await fetch(`${apiBase}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })

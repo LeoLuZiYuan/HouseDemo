@@ -1,4 +1,4 @@
-const apiBase = 'http://localhost:5088/api'
+const apiBase = import.meta.env.VITE_API_BASE
 
 export function useAuthApi() {
   const login = async (email, password) => {

@@ -3,7 +3,7 @@ import { useAuth } from './useAuth'
 export function usePropertyApi() {
   const { token } = useAuth()
 
-  const apiBase = 'http://localhost:5000/api'
+  const apiBase = import.meta.env.VITE_API_BASE
 
   const getAuthHeaders = () => ({
     'Content-Type': 'application/json',
