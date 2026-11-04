@@ -58,12 +58,16 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 import ImageGallery from '../components/ImageGallery.vue'
-import rooms from '../data/rooms.json'
+import { usePropertyApi } from '../composables/usePropertyApi'
 
 const route = useRoute()
+const room = ref(null)
+const { getPublicPropertyById } = usePropertyApi()
 
-const room = computed(() => rooms.find(r => r.id === route.params.id) ?? null)
+onMounted(async () => {
+  room.value = await getPublicPropertyById(route.params.id)
+})
 </script>
