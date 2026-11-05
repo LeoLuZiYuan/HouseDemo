@@ -29,3 +29,4 @@ dist-ssr/
 
 # Local image assets
 public/images/
+playwright-report/

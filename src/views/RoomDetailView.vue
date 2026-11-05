@@ -1,11 +1,28 @@
 <template>
   <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <!-- 找不到房型 -->
-    <div v-if="!room" class="text-center py-20">
+    <!-- Loading State -->
+    <div v-if="isLoading" class="flex justify-center py-20">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-rose-500"></div>
+    </div>
+
+    <!-- Error State -->
+    <div v-else-if="error" class="bg-red-50 border border-red-200 rounded-lg p-6 text-center py-20">
+      <p class="text-red-600 font-semibold mb-4">{{ error }}</p>
+      <button @click="fetchProperty" class="px-4 py-2 bg-rose-500 text-white rounded hover:bg-rose-600 transition">
+        重新加載
+      </button>
+      <RouterLink to="/" class="ml-4 px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400 transition">
+        回到首頁
+      </RouterLink>
+    </div>
+
+    <!-- Not Found State -->
+    <div v-else-if="!room" class="text-center py-20">
       <p class="text-gray-400 text-lg">找不到此房型</p>
       <RouterLink to="/" class="mt-4 inline-block text-rose-500 hover:underline">← 回到首頁</RouterLink>
     </div>
 
+    <!-- Room Details -->
     <template v-else>
       <!-- 返回按鈕 -->
       <RouterLink to="/" class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-rose-500 transition-colors mb-6">
@@ -58,12 +75,29 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 import ImageGallery from '../components/ImageGallery.vue'
-import rooms from '../data/rooms.json'
+import { usePropertyApi } from '../composables/usePropertyApi'
 
 const route = useRoute()
+const room = ref(null)
+const isLoading = ref(true)
+const error = ref(null)
+const { getPublicPropertyById } = usePropertyApi()
 
-const room = computed(() => rooms.find(r => r.id === route.params.id) ?? null)
+const fetchProperty = async () => {
+  isLoading.value = true
+  error.value = null
+  try {
+    room.value = await getPublicPropertyById(route.params.id)
+  } catch (err) {
+    error.value = 'Failed to load property details. Please try again.'
+    console.error('Error fetching property:', err)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+onMounted(fetchProperty)
 </script>
