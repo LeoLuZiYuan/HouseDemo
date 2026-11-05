@@ -31,7 +31,7 @@ Enable a property owner to:
 - **Backend:** .NET Minimal APIs + Dapper ORM
 - **Database:** PostgreSQL
 - **API Style:** REST
-- **Hosting:** Frontend on GitHub Pages + Backend on Heroku
+- **Hosting:** Frontend on GitHub Pages + Backend on Render (Docker)
 - **Features:** Database-backed listings + landlord admin panel
 
 ### User Personas
@@ -48,7 +48,7 @@ Enable a property owner to:
 | Backend | .NET Minimal APIs | Lightweight, fast iteration |
 | ORM | Dapper | Lightweight SQL mapping; quick learning curve |
 | Database | PostgreSQL | Robust, open-source, excellent .NET support |
-| Deployment | GitHub Pages + Heroku | Low cost, learning-friendly, GitHub native |
+| Deployment | GitHub Pages + Render | Low cost, learning-friendly, native Docker support |
 
 ### Key Constraints
 - Pure frontend, no backend (current) → transitioning to backend-driven
