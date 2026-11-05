@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/HouseDemo.Backend.props" />
-</Project>

@@ -36,3 +36,16 @@ playwright-report/
 src/backend/**/appsettings.json
 src/backend/**/appsettings.*.json
 !src/backend/**/appsettings.example.json
+
+# .NET build artifacts
+src/backend/**/bin/
+src/backend/**/obj/
+src/backend/**/.vs/
+src/backend/**/.vscode/
+src/backend/**/Properties/launchSettings.json
+
+# Test results
+test-results/
+**/test-results/
+playwright-report/
+coverage/
