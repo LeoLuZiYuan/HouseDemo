@@ -3,6 +3,10 @@ using HouseDemo.Backend.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure port from PORT environment variable (Render) or default to 8080
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://+:{port}");
+
 builder.Services.AddSingleton<Database>();
 builder.Services.AddSingleton<PropertyRepository>();
 builder.Services.AddSingleton<PropertyService>();
