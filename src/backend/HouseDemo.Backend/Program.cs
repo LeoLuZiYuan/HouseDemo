@@ -24,6 +24,10 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// Health check endpoint (for load balancers and monitoring)
+app.MapGet("/health", () => Results.Ok(new { status = "healthy" }))
+    .WithName("Health");
+
 app.UseCors("AllowAll");
 app.UseMiddleware<AuthMiddleware>();
 
