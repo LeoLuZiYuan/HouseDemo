@@ -1,0 +1,49 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: housedemoll-postgres
+    environment:
+      POSTGRES_DB: housedb
+      POSTGRES_USER: houseadmin
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-demo123456}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U houseadmin -d housedb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - housedemo-network
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: housedemoll-backend
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__DefaultConnection: "Host=postgres;Database=housedb;Username=houseadmin;Password=${DB_PASSWORD:-demo123456}"
+      Jwt__Secret: ${JWT_SECRET:-your-32-character-minimum-jwt-secret-key-here}
+      Landlord__Email: ${LANDLORD_EMAIL:-landlord@housedemoll.com}
+      Landlord__PasswordHash: ${LANDLORD_PASSWORD_HASH:-$2a$11$361iDHFu5B80.65OdgiqhOxRXoBihMl3MSDWznlRNk7c04hzHyiSS}
+    ports:
+      - "5088:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - housedemo-network
+    restart: unless-stopped
+
+networks:
+  housedemo-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
