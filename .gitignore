@@ -31,3 +31,8 @@ dist-ssr/
 public/images/
 playwright-report/
 .env.production
+
+# Backend configuration with secrets
+src/backend/**/appsettings.json
+src/backend/**/appsettings.*.json
+!src/backend/**/appsettings.example.json
