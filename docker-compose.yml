@@ -26,9 +26,19 @@ services:
       dockerfile: Dockerfile
     container_name: housedemoll-backend
     environment:
-      ASPNETCORE_ENVIRONMENT: Production
+      # Environment Mode: Development for local, Production for Render
+      # Default: Development (connects to local postgres service)
+      # For Render: DATABASE_URL="postgres://user:pass@render-host/dbname" docker-compose up
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Development}
       ASPNETCORE_URLS: http://+:8080
-      ConnectionStrings__DefaultConnection: "Host=postgres;Database=housedb;Username=houseadmin;Password=${DB_PASSWORD:-demo123456}"
+      
+      # Database Connection: supports local (docker-compose postgres) and remote (Render PostgreSQL)
+      # Development (local): Uses postgres service from this compose file
+      # Production (Render): Override DATABASE_URL with Render connection string
+      DATABASE_URL: ${DATABASE_URL:-Host=postgres;Database=housedb;Username=houseadmin;Password=demo123456;Port=5432}
+      ConnectionStrings__DefaultConnection: ${DATABASE_URL:-Host=postgres;Database=housedb;Username=houseadmin;Password=demo123456;Port=5432}
+      
+      # Authentication and landlord credentials
       Jwt__Secret: ${JWT_SECRET:-your-32-character-minimum-jwt-secret-key-here}
       Landlord__Email: ${LANDLORD_EMAIL:-landlord@housedemoll.com}
       Landlord__PasswordHash: ${LANDLORD_PASSWORD_HASH:-$2a$11$361iDHFu5B80.65OdgiqhOxRXoBihMl3MSDWznlRNk7c04hzHyiSS}
@@ -47,3 +57,18 @@ networks:
 
 volumes:
   postgres_data:
+
+# Usage Examples:
+#
+# 1. Local Development (use local postgres in docker-compose):
+#    docker-compose up
+#    Connects to: postgres://houseadmin:demo123456@postgres:5432/housedb
+#
+# 2. Test with Render PostgreSQL (production database):
+#    DATABASE_URL="postgres://user:password@your-render-host:5432/your-dbname" \
+#    ASPNETCORE_ENVIRONMENT="Production" \
+#    docker-compose up
+#    Connects to: Render's PostgreSQL instance
+#
+# 3. Both options support hot reload via docker-compose
+#    Changes are reflected immediately without container restart
